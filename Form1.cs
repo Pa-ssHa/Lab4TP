@@ -12,7 +12,7 @@ namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
-        private List<konus_class> Cone_List = new List<konus_class>();
+        private konus_class [] Cone_List = new konus_class[16];
         public Form1()
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace WindowsFormsApp2
         {
             for (int i = 0; i < 16; i++)
             {
-                Cone_List.Add(new konus_class(0, 0));
+                Cone_List[i] = new konus_class(0, 0);
             }
         }
 
@@ -218,7 +218,7 @@ namespace WindowsFormsApp2
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             activeIndex = listBox1.SelectedIndex;
-            if (activeIndex >= 0 && activeIndex < Cone_List.Count)
+            if (activeIndex >= 0 && activeIndex < 16)
             {
                 textBox1.Text = Cone_List[activeIndex].GetRadius().ToString();
                 textBox2.Text = Cone_List[activeIndex].GetHeight().ToString();
@@ -228,10 +228,10 @@ namespace WindowsFormsApp2
         private void buttonClearList_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            Cone_List.Clear();
+            
             for (int i = 0; i < 16; i++)
             {
-                Cone_List.Add(new konus_class(0, 0));
+                Cone_List[i] = new konus_class(0, 0);
             }
         }
     }
